@@ -1,0 +1,429 @@
+
+    /* Style global */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    body {
+      display: flex;
+      background: #f7f9fc;
+      transition: margin-left 0.3s ease;
+    }
+
+    .main {
+      flex: 1;
+      padding: 20px 30px;
+      transition: margin-left 0.3s ease;
+      margin-left: 220px; /* valeur par défaut quand sidebar est visible */
+    }
+    
+    
+
+    /* Header */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .header input {
+      width: 40%;
+      min-width: 150px;
+      max-width: 300px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .user-info span {
+      font-size: 14px;
+      text-align: right;
+    }
+    
+    .user-avatar {
+      background: #ff7900;
+      color: white;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    
+    /* Title Bar */
+    .title-bar {
+      margin: 30px 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .title-bar h1 {
+      font-size: 22px;
+    }
+    
+    .title-bar button {
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    
+    .card h4 {
+      color: #00b398;
+      margin-bottom: 5px;
+    }
+    
+    .card small {
+      color: #888;
+    }
+    
+    .card p {
+      margin: 8px 0;
+      font-size: 14px;
+      color: #555;
+    }
+    
+    .card .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+    }
+    
+    .switches {
+      display: flex;
+      gap: 5px;
+    }
+    
+    .switches div {
+      width: 10px;
+      height: 10px;
+      background: #ccc;
+      border-radius: 50%;
+    }
+    
+    .apprenants {
+      color: #00b398;
+      font-size: 14px;
+    }
+    
+    
+    /* Cacher l'input file */
+    input[type="file"] {
+      display: none;
+    }
+    
+    /* Responsivité */
+    @media (max-width: 992px) {
+      .sidebar {
+        width: 200px;
+      }
+
+      .main {
+        padding: 20px;
+      }
+
+      .header input {
+        width: 200px;
+      }
+
+      .title-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+
+      .title-bar button {
+        margin-right: 0;
+      }
+
+      .user-info {
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 5px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        position: fixed;
+        transform: translateX(-100%);
+      }
+
+      #sidebar-toggle:checked ~ .sidebar {
+        transform: translateX(0);
+      }
+
+      .sidebar-toggle-btn {
+        display: block;
+      }
+
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-content {
+        width: 90%;
+        margin: 10% auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sidebar h2,
+      .sidebar ul li {
+        font-size: 14px;
+      }
+
+      .header input {
+        width: 100%;
+      }
+
+      .card h4,
+      .card p,
+      .card small {
+        font-size: 14px;
+      }
+
+      .title-bar h1 {
+        font-size: 18px;
+      }
+
+      .btn-ajouter, .submit-btn {
+        padding: 10px;
+        font-size: 14px;
+      }
+
+      .form-row {
+        flex-direction: column;
+      }
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.3);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        background-color: #ffffff;
+        padding: 25px;
+        border-radius: 10px;
+        width: 400px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+
+    .modal-content h2 {
+        margin-top: 0;
+    }
+
+    label {
+        display: block;
+        margin-top: 15px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        margin-top: 8px;
+    }
+
+    .btn-submit {
+        margin-top: 20px;
+        background-color: #088d84;
+        color: #ffffff;
+        border: none;
+        padding: 10px 18px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        float: right;
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 20px;
+        cursor: pointer;
+        color: #999;
+    }
+
+    :root {
+        --color-bg-modal: #ffffff;
+        --color-shadow-modal: rgba(0, 0, 0, 0.1);
+        --color-input-bg: #f5f5f5;
+        --color-input-border: #e0e0e0;
+        --color-input-text: #333333;
+        --color-label: #555555;
+        --color-btn-submit-bg: #088d84;
+        --color-btn-submit-text: #ffffff;
+        --color-btn-open-bg: #9de2d3;
+        --color-btn-open-text: #000;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        background-color: var(--color-bg-modal);
+        padding: 25px;
+        border-radius: 10px;
+        width: 400px;
+        box-shadow: 0 0 10px var(--color-shadow-modal);
+        position: relative;
+    }
+
+    .modal-content h2 {
+        margin-top: 0;
+        font-size: 18px;
+        color: var(--color-label);
+    }
+
+    label {
+        display: block;
+        margin-top: 15px;
+        color: var(--color-label);
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid var(--color-input-border);
+        background-color: var(--color-input-bg);
+        border-radius: 8px;
+        font-size: 14px;
+        color: var(--color-input-text);
+        margin-top: 8px;
+    }
+
+    .btn-submit {
+        margin-top: 20px;
+        background-color: var(--color-btn-submit-bg);
+        color: var(--color-btn-submit-text);
+        border: none;
+        padding: 10px 18px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        float: right;
+    }
+
+    .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 20px;
+        cursor: pointer;
+        color: #999;
+    }
+
+    .btn-ajouter {
+        padding: 10px 20px;
+        background-color: var(--color-btn-open-bg);
+        color: var(--color-btn-open-text);
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .pagination ul li a {
+      display: inline-block;
+      padding: 8px 12px;
+      margin: 0 5px;
+      text-decoration: none;
+      color: #333;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .pagination ul li a:hover {
+      background-color: #088d84;
+      color: white;
+    }
+
+    .pagination ul li a.active {
+      background-color: #088d84;
+      color: white;
+    }
+
+    input[type="checkbox"] {
+        margin-right: 10px;
+        transform: scale(1.2);
+    }
+
+    label {
+        font-size: 14px;
+        color: #555;
+    }
+  

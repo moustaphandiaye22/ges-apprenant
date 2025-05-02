@@ -1,0 +1,534 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "login": "admin",
+            "password": "admin123",
+            "profil": "Admin",
+            "nom": "Administrateur",
+            "email": "admin@odc.com"
+        },
+        {
+            "id": 2,
+            "login": "vigile",
+            "password": "vigile123",
+            "profil": "Vigile",
+            "nom": "Vigile ODC",
+            "email": "vigile@odc.com"
+        },
+        {
+            "id": 3,
+            "login": "apprenant",
+            "password": "apprenant123",
+            "profil": "Apprenant",
+            "nom": "Apprenant Test",
+            "email": "apprenant@odc.com"
+        }
+    ],
+    "promotions": [
+        {
+            "id": 4,
+            "nom": "promotion 2025",
+            "date_debut": "2025-04-24",
+            "date_fin": "2025-05-11",
+            "photo": "promo_6808e02bed93f5.73893951.jpeg",
+            "etat": "active",
+            "statut": "en cours",
+            "referentiels": [
+                "2",
+                "1",
+                "5"
+            ],
+            "apprenants": [
+                6,
+                13,
+                14,
+                15,
+                16,
+                17,
+                17
+            ]
+        },
+        {
+            "id": 5,
+            "nom": "promotion 2000",
+            "date_debut": "02\/02\/2000",
+            "date_fin": "12\/12\/2000",
+            "photo": "ref_680c1817e421c5.36126276.JPG",
+            "etat": "inactive",
+            "statut": "termin\u00e9",
+            "referentiels": [
+                "3"
+            ],
+            "apprenants": []
+        },
+        {
+            "id": 2,
+            "nom": "promotion 2019",
+            "date_debut": "2019-04-19",
+            "date_fin": "2019-02-17",
+            "photo": "Download premium vector of Yellow 2019 neon sign vector by Ning about christmas, brick wall, new year, neon, and golden 532808.jpeg",
+            "etat": "inactive",
+            "statut": "termin\u00e9",
+            "referentiels": [
+                "7",
+                "6",
+                "5"
+            ],
+            "apprenants": []
+        },
+        {
+            "id": 3,
+            "nom": "promotion 2020",
+            "date_debut": "2020-02-17",
+            "date_fin": "2020-12-17",
+            "photo": "_ (2).jpeg",
+            "etat": "inactive",
+            "statut": "termin\u00e9",
+            "referentiels": [
+                "3",
+                "5",
+                "7",
+                "8"
+            ],
+            "apprenants": []
+        },
+        {
+            "id": 1,
+            "nom": "promotion 2021",
+            "date_debut": "2021-04-19",
+            "date_fin": "2021-12-17",
+            "photo": "2021 \u043d\u0435\u043e\u043d\u043e\u0432\u0430\u044f \u0432\u044b\u0432\u0435\u0441\u043a\u0430, \u044f\u0440\u043a\u0430\u044f \u0432\u044b\u0432\u0435\u0441\u043a\u0430_ _ \u041f\u0440\u0435\u043c\u0438\u0443\u043c \u0432\u0435\u043a\u0442\u043e\u0440\u044b.jpeg",
+            "statut": "termin\u00e9",
+            "referentiels": [
+                "1",
+                "7"
+            ],
+            "apprenants": [],
+            "etat": "inactive"
+        },
+        {
+            "id": 6,
+            "nom": "promotion 2023",
+            "date_debut": "2023-04-18",
+            "date_fin": "2023-10-19",
+            "photo": "680963e23be48__ (1).jpeg",
+            "etat": "inactive",
+            "statut": "termin\u00e9",
+            "referentiels": [
+                "1",
+                "2",
+                "3",
+                "6"
+            ],
+            "apprenants": [
+                {
+                    "id": 6,
+                    "matricule": "ODC20250006",
+                    "prenom": "Aliou",
+                    "nom": "Diallo",
+                    "date_naissance": "2001-01-01",
+                    "lieu_naissance": "Saint-Louis",
+                    "adresse": "Saint-Louis",
+                    "telephone": "778888888",
+                    "email": "aliou.diallo@gmail.com",
+                    "tuteur_nom": "Mamadou Diallo",
+                    "tuteur_lien": "P\u00e8re",
+                    "tuteur_adresse": "Saint-Louis",
+                    "tuteur_telephone": "778888888",
+                    "document": "\/uploads\/aliou_diallo_doc.jpg"
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "nom": "promotion 2022",
+            "date_debut": "2022-04-02",
+            "date_fin": "2022-11-30",
+            "photo": "promo_68012be8247c84.25525120.png",
+            "etat": "inactive",
+            "statut": "termin\u00e9",
+            "referentiels": [
+                "1",
+                "5"
+            ],
+            "apprenants": []
+        },
+        {
+            "id": 8,
+            "nom": "promotion 2024",
+            "date_debut": "2024-04-04",
+            "date_fin": "2024-12-26",
+            "photo": "\u2615\ufe0f on TikTok.jpeg",
+            "etat": "inactive",
+            "statut": "termin\u00e9",
+            "referentiels": [
+                "1",
+                "3",
+                "7"
+            ],
+            "apprenants": []
+        },
+        {
+            "id": 9,
+            "nom": "promotion 2017",
+            "date_debut": "2017-02-02",
+            "date_fin": "2017-12-12",
+            "photo": "ref_6810971d27f9f7.38182664.jpg",
+            "etat": "inactive",
+            "statut": "termin\u00e9",
+            "referentiels": [
+                "2"
+            ],
+            "apprenants": []
+        },
+        {
+            "id": 10,
+            "nom": "promotion 1970",
+            "date_debut": "1970-02-02",
+            "date_fin": "1970-12-12",
+            "photo": "ref_6810a23d8dede1.09023383.jpeg",
+            "etat": "inactive",
+            "statut": "termin\u00e9",
+            "referentiels": [
+                "6"
+            ],
+            "apprenants": []
+        },
+        {
+            "id": 11,
+            "nom": "promotion 2002",
+            "date_debut": "2002-02-02",
+            "date_fin": "2002-12-12",
+            "photo": "ref_68117f205c3915.80337712.png",
+            "etat": "inactive",
+            "statut": "termin\u00e9",
+            "referentiels": [
+                "6"
+            ],
+            "apprenants": []
+        }
+    ],
+    "referentiels": [
+        {
+            "id": 1,
+            "nom": "Developpement web et mobile",
+            "description": "Formation en d\u00e9veloppement web et mobile",
+            "photo": "D\u00e9veloppement\u00a0_ les langages informatiques les plus populaires.jpeg",
+            "capacite": 25,
+            "sessions": 2,
+            "modules": 12
+        },
+        {
+            "id": 2,
+            "nom": "Developpement Data",
+            "description": "Formation en DevOps et administration syst\u00e8me",
+            "photo": "Big Data in Action!.jpeg",
+            "capacite": 20,
+            "sessions": 1,
+            "modules": 10
+        },
+        {
+            "id": 3,
+            "nom": "Referent Digital",
+            "description": "Formation en r\u00e9f\u00e9rent digital",
+            "photo": "Best Digital Marketing.jpeg",
+            "capacite": 20,
+            "sessions": 1,
+            "modules": 10
+        },
+        {
+            "id": 5,
+            "nom": "HACKEUSE",
+            "description": "Formation en hackeuse",
+            "photo": "hacking logos \ud83c\udff4_\u2620\ufe0f.jpeg",
+            "capacite": 20,
+            "sessions": 1,
+            "modules": 10
+        },
+        {
+            "nom": "cyber securite",
+            "description": "formation en cyber securite",
+            "capacite": 30,
+            "sessions": "1",
+            "photo": "Why NJ Small Businesses Need to Prioritize Cybersecurity_ Insights and Strategies.jpeg",
+            "modules_count": 10,
+            "apprenants_count": 20,
+            "id": 6
+        },
+        {
+            "nom": "AWS",
+            "description": "formation en AWS",
+            "capacite": 30,
+            "sessions": "1",
+            "photo": "Tecnologia de computa\u00e7\u00e3o em nuvem com \u00edcones em ilustra\u00e7\u00e3o vetorial de fundo azul _ Vetor Premium.jpeg",
+            "modules_count": 10,
+            "apprenants_count": 20,
+            "id": 7
+        },
+        {
+            "nom": "albert",
+            "description": "formation",
+            "capacite": 30,
+            "sessions": "2",
+            "photo": "ref_68123587eb5578.74806880.png",
+            "modules_count": 1,
+            "apprenants_count": 1,
+            "id": "ref_68123587eb6b0"
+        }
+    ],
+    "apprenants": [
+        {
+            "id": 3,
+            "matricule": "ODC20250003",
+            "prenom": "moustapha",
+            "nom": "ndiaye",
+            "date_naissance": "1111-11-11",
+            "lieu_naissance": "DIAMAGUENE",
+            "adresse": "dakar",
+            "telephone": "771411251",
+            "email": "tziprincii343@gmail.com",
+            "referentiel_id": "1",
+            "tuteur_nom": "cheikh",
+            "tuteur_lien": "pere",
+            "tuteur_adresse": "dakar",
+            "tuteur_telephone": "771411251",
+            "document": "\/uploads\/IMG_1036.JPG",
+            "statut": "Actif"
+        },
+        {
+            "id": 4,
+            "matricule": "ODC20250004",
+            "prenom": "dane",
+            "nom": "lo",
+            "date_naissance": "2000-09-22",
+            "lieu_naissance": "dakar",
+            "adresse": "dakar",
+            "telephone": "777777777",
+            "email": "dane@gmail.com",
+            "referentiel_id": "2",
+            "tuteur_nom": "papa",
+            "tuteur_lien": "pere",
+            "tuteur_adresse": "dakar",
+            "tuteur_telephone": "771411251",
+            "document": "\/uploads\/WLBQ9761.JPG",
+            "statut": "Inactif"
+        },
+        {
+            "id": 5,
+            "matricule": "ODC20250005",
+            "prenom": "papa",
+            "nom": "ndiaye",
+            "date_naissance": "2002-02-02",
+            "lieu_naissance": "dakar",
+            "adresse": "dakar",
+            "telephone": "766666666",
+            "email": "papa@gmail.com",
+            "referentiel_id": "7",
+            "tuteur_nom": "mor",
+            "tuteur_lien": "oncle",
+            "tuteur_adresse": "dakar",
+            "tuteur_telephone": "771411251",
+            "document": "\/uploads\/IMG_7947.JPG",
+            "statut": "Actif"
+        },
+        {
+            "id": 6,
+            "matricule": "ODC20250006",
+            "prenom": "bamba",
+            "nom": "thiam",
+            "date_naissance": "2010-10-10",
+            "lieu_naissance": "thies",
+            "adresse": "saint-louis",
+            "telephone": "788888888",
+            "email": "thiam.bamba@gmail.com",
+            "referentiel_id": "1",
+            "tuteur_nom": "papa",
+            "tuteur_lien": "oncle",
+            "tuteur_adresse": "dakar",
+            "tuteur_telephone": "771411251",
+            "document": "\/uploads\/IFPC4939.JPG",
+            "statut": "Actif"
+        },
+        {
+            "id": 7,
+            "matricule": "ODC20250007",
+            "prenom": "baba",
+            "nom": "seydou",
+            "date_naissance": "1999-11-03",
+            "lieu_naissance": "sangalkam",
+            "adresse": "sangalkam",
+            "telephone": "755555555",
+            "email": "baba.seydou@gmail.com",
+            "referentiel_id": "6",
+            "tuteur_nom": "pere",
+            "tuteur_lien": "dakar",
+            "tuteur_adresse": "771411251",
+            "tuteur_telephone": "\/uploads\/wayde.jpg",
+            "document": "\/uploads\/wayde.jpg",
+            "statut": "Actif"
+        },
+        {
+            "id": 8,
+            "matricule": "ODC20250008",
+            "prenom": "famara",
+            "nom": "sane",
+            "date_naissance": "2000-02-01",
+            "lieu_naissance": "DIAMAGUENE",
+            "adresse": "dakar",
+            "telephone": "771411251",
+            "email": "famara@gmail.com",
+            "referentiel_id": "1",
+            "tuteur_nom": "papa",
+            "tuteur_lien": "oncle",
+            "tuteur_adresse": "dakar",
+            "tuteur_telephone": "771411251",
+            "document": "\/uploads\/couronne.png",
+            "statut": "Actif"
+        },
+        {
+            "id": 9,
+            "matricule": "ODC20250009",
+            "prenom": "moustapha",
+            "nom": "ndiaye",
+            "date_naissance": "1111-11-11",
+            "lieu_naissance": "thies",
+            "adresse": "dakar",
+            "telephone": "771411251",
+            "email": "tapha@gmail.com",
+            "referentiel_id": "2",
+            "tuteur_nom": "papa",
+            "tuteur_lien": "frere",
+            "tuteur_adresse": "dakar",
+            "tuteur_telephone": "771411251",
+            "document": "\/uploads\/_.jpeg",
+            "statut": "Actif"
+        },
+        {
+            "id": 10,
+            "matricule": "ODC20250010",
+            "prenom": "moustapha",
+            "nom": "ndiaye",
+            "date_naissance": "2000-01-11",
+            "lieu_naissance": "thies",
+            "adresse": "dakar",
+            "telephone": "771411251",
+            "email": "tziprincii33@gmail.com",
+            "referentiel_id": "5",
+            "tuteur_nom": "papa lo",
+            "tuteur_lien": "pere",
+            "tuteur_adresse": "dakar",
+            "tuteur_telephone": "771411251",
+            "document": "\/uploads\/_.jpeg",
+            "statut": "Actif"
+        },
+        {
+            "id": 11,
+            "matricule": "ODC20250011",
+            "prenom": "mama",
+            "nom": "diop",
+            "date_naissance": "1111-11-11",
+            "lieu_naissance": "DIAMAGUENE",
+            "adresse": "dakar",
+            "telephone": "771411111",
+            "email": "maman@gmail.com",
+            "referentiel_id": "5",
+            "tuteur_nom": "papa",
+            "tuteur_lien": "frere",
+            "tuteur_adresse": "dakar",
+            "tuteur_telephone": "771411251",
+            "document": "\/uploads\/WhatsApp Image 2025-03-24 at 1.32.15 PM.jpeg",
+            "statut": "Actif"
+        },
+        {
+            "id": 12,
+            "matricule": "ODC20250012",
+            "prenom": "pathe",
+            "nom": "ndiaye",
+            "date_naissance": "1999-12-27",
+            "lieu_naissance": "dakar",
+            "adresse": "dakar",
+            "telephone": "766666567",
+            "email": "pathe@gmail.com",
+            "referentiel_id": "1",
+            "tuteur_nom": "papa lo",
+            "tuteur_lien": "pere",
+            "tuteur_adresse": "dakar",
+            "tuteur_telephone": "771411251",
+            "document": "\/uploads\/IMG_7946.JPG",
+            "statut": "Actif"
+        },
+        {
+            "id": 13,
+            "matricule": "ODC20250013",
+            "prenom": "aly",
+            "nom": "wane",
+            "date_naissance": "1998-10-10",
+            "lieu_naissance": "mbao",
+            "adresse": "keur massar",
+            "telephone": "755555656",
+            "email": "aly@gmail.com",
+            "referentiel_id": "2",
+            "tuteur_nom": "papa lo",
+            "tuteur_lien": "pere",
+            "tuteur_adresse": "dakar",
+            "tuteur_telephone": "771411251",
+            "document": "\/uploads\/WKSJ5501.JPG",
+            "statut": "Actif"
+        },
+        {
+            "id": 14,
+            "matricule": "ODC20250014",
+            "prenom": "bakary",
+            "nom": "odc",
+            "date_naissance": "2006-01-01",
+            "lieu_naissance": "DIAMAGUENE",
+            "adresse": "dakar",
+            "telephone": "751234567",
+            "email": "bakary@gmail.com",
+            "referentiel_id": "3",
+            "tuteur_nom": "cheikh",
+            "tuteur_lien": "frere",
+            "tuteur_adresse": "dakar",
+            "tuteur_telephone": "771411251",
+            "document": "\/uploads\/WKSJ5501.JPG",
+            "statut": "Actif"
+        },
+        {
+            "id": 15,
+            "matricule": "ODC20250015",
+            "prenom": "mar",
+            "nom": "lo",
+            "date_naissance": "2222-02-12",
+            "lieu_naissance": "DIAMAGUENE",
+            "adresse": "dakar",
+            "telephone": "771411254",
+            "email": "mar@gmail.com",
+            "referentiel_id": "1",
+            "tuteur_nom": "papa lo",
+            "tuteur_lien": "pere",
+            "tuteur_adresse": "dakar",
+            "tuteur_telephone": "771411251",
+            "document": "\/uploads\/Capture d\u2019\u00e9cran du 2025-04-02 11-16-22.png",
+            "statut": "Actif"
+        },
+        {
+            "id": 17,
+            "matricule": "ODC20250017",
+            "prenom": "fallou",
+            "nom": "senghor",
+            "date_naissance": "2000-12-12",
+            "lieu_naissance": "mbao",
+            "adresse": "dakar",
+            "telephone": "771456576",
+            "email": "fallousenghor@gmail.com",
+            "referentiel_id": "3",
+            "tuteur_nom": "papa lo",
+            "tuteur_lien": "pere",
+            "tuteur_adresse": "dakar",
+            "tuteur_telephone": "771411251",
+            "document": "\/uploads\/Capture d\u2019\u00e9cran du 2025-04-02 11-16-22.png",
+            "statut": "Actif"
+        }
+    ]
+}
