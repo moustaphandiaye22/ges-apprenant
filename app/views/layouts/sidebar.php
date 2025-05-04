@@ -95,9 +95,9 @@
     }
 </style>
 
-<!-- <input type="checkbox" id="sidebar-toggle" hidden>
+<input type="checkbox" id="sidebar-toggle" hidden>
 <label for="sidebar-toggle" class="sidebar-toggle-btn">
-  <i class="fas fa-bars"></i> -->
+  <i class="fas fa-bars"></i>
 </label>
 
 <!-- filepath: /var/www/ges-apprenant/app/views/layouts/sidebar.php -->

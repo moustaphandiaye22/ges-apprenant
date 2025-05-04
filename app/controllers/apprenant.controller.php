@@ -14,12 +14,12 @@ function handleListApprenants() {
 
     $apprenants = $model['all']();
 
-    foreach ($apprenants as &$apprenant) {
+    $apprenants = array_map(function ($apprenant) {
         if (!isset($apprenant['statut'])) {
-            $apprenant['statut'] = 'Actif'; 
+            $apprenant['statut'] = 'Actif';
         }
-    }
-    unset($apprenant); 
+        return $apprenant;
+    }, $apprenants);
 
     $data = [
         'apprenants' => $apprenants,
@@ -54,7 +54,7 @@ function handleAddApprenant() {
         $referentiel_id = trim($_POST['referentiel_id'] ?? '');
         $errors = [];
 
-        $errors[] = validateRequiredFields([
+        $requiredFields = [
             'Prénom' => $prenom,
             'Nom' => $nom,
             'Date de naissance' => $date_naissance,
@@ -67,7 +67,14 @@ function handleAddApprenant() {
             'Adresse du tuteur' => $tuteur_adresse,
             'Téléphone du tuteur' => $tuteur_telephone,
             'Référentiel' => $referentiel_id,
-        ]);
+        ];
+
+        $errors = array_reduce(array_keys($requiredFields), function ($carry, $field) use ($requiredFields) {
+            if (empty($requiredFields[$field])) {
+                $carry[] = "Le champ $field est requis.";
+            }
+            return $carry;
+        }, []);
 
         $errors[] = validateEmail($email);
 
@@ -104,28 +111,24 @@ function handleAddApprenant() {
         $result = addApprenant($prenom, $nom, $_POST['date_naissance'], $_POST['lieu_naissance'], $_POST['adresse'], $_POST['telephone'], $email, $_POST['tuteur_nom'], $_POST['tuteur_lien'], $_POST['tuteur_adresse'], $_POST['tuteur_telephone'], $_FILES['document']['name'], $_POST['referentiel_id'], $login, $hashedPassword);
 
         if ($result) {
-            // Ajouter l'apprenant à la promotion active et en cours
             $promotionFilePath = __DIR__ . '/../../data/data.json';
             $data = jsonToArray($promotionFilePath);
 
-            // Trouver la promotion active et en cours
             $promotionActive = array_filter($data['promotions'], function ($promotion) {
                 return $promotion['etat'] === 'active' && $promotion['statut'] === 'en cours';
             });
 
             if (!empty($promotionActive)) {
-                $promotionActive = reset($promotionActive); // Prendre la première promotion active et en cours
+                $promotionActive = reset($promotionActive); 
                 $promotionId = $promotionActive['id'];
 
                 // Ajouter l'apprenant à la promotion
-                foreach ($data['promotions'] as &$promotion) {
+                $data['promotions'] = array_map(function ($promotion) use ($promotionId, $result) {
                     if ($promotion['id'] === $promotionId) {
-                        $promotion['apprenants'][] = $result['id']; // Ajouter l'ID de l'apprenant
-                        break;
+                        $promotion['apprenants'][] = $result['id'];
                     }
-                }
-
-                // Sauvegarder les modifications
+                    return $promotion;
+                }, $data['promotions']);
                 arrayToJson($promotionFilePath, $data);
             }
 
@@ -152,7 +155,7 @@ function handleApprenantDetails() {
         die("ID apprenant manquant.");
     }
 
-    $id = intval($_GET['id']); // Sécuriser l'ID
+    $id = intval($_GET['id']); 
     require_once __DIR__ . '/../models/apprenant.model.php';
 
     $apprenant = getApprenantById($id);
@@ -160,6 +163,9 @@ function handleApprenantDetails() {
     if (!$apprenant) {
         die("Apprenant introuvable.");
     }
+
+    $apprenant = array_filter($apprenants, fn($a) => $a['id'] === $id);
+    $apprenant = reset($apprenant); // Récupérer le premier élément trouvé
 
     $data = [
         'apprenant' => $apprenant,

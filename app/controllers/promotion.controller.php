@@ -126,7 +126,7 @@ function handleActivatePromotion() {
     $promotionExists = false;
     $newState = '';
 
-    foreach ($data['promotions'] as &$promotion) {
+    $data['promotions'] = array_map(function ($promotion) use ($idToActivate, &$newState, &$promotionExists) {
         if ($promotion['id'] == $idToActivate) {
             $promotion['etat'] = 'active';
             $newState = 'active';
@@ -134,7 +134,8 @@ function handleActivatePromotion() {
         } else {
             $promotion['etat'] = 'inactive';
         }
-    }
+        return $promotion;
+    }, $data['promotions']);
 
     if (!$promotionExists) {
         echo json_encode(['success' => false, 'message' => 'Promotion introuvable.']);
@@ -171,7 +172,6 @@ function showPromotions() {
 
     $promotions = $data['promotions'];
 
-    // Trier les promotions : actives en premier
     usort($promotions, function ($a, $b) {
         return $b['etat'] === 'active' ? 1 : -1;
     });
@@ -205,17 +205,19 @@ function updatePromotionStatus() {
 
     $currentYear = date('Y');
 
-    foreach ($data['promotions'] as &$promotion) {
+    $data['promotions'] = array_map(function ($promotion) use ($currentYear) {
         $yearFin = date('Y', strtotime($promotion['date_fin']));
 
         if ($yearFin < $currentYear) {
-            $promotion['statut'] = 'terminé'; 
+            $promotion['statut'] = 'terminé';
         } elseif ($yearFin == $currentYear) {
-            $promotion['statut'] = 'en cours'; 
+            $promotion['statut'] = 'en cours';
         } else {
-            $promotion['statut'] = 'pas encore commencer'; 
+            $promotion['statut'] = 'pas encore commencer';
         }
-    }
+
+        return $promotion;
+    }, $data['promotions']);
 
     if (!file_put_contents($filePath, json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE))) {
         setSession('errors', [Messages::ERROR_SAVE_FAILED]);

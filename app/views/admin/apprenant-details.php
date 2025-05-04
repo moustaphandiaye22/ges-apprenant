@@ -2,7 +2,6 @@
 require_once __DIR__ . '/../../services/session.service.php';
 require '/var/www/ges-apprenant/app/models/apprenant.model.php';
 
-// Charger les référentiels
 $referentielsFilePath = '/var/www/ges-apprenant/data/data.json';
 $referentiels = json_decode(file_get_contents($referentielsFilePath), true)['referentiels'];
 
@@ -17,7 +16,6 @@ if (!$apprenant) {
     die("Apprenant introuvable.");
 }
 
-// Trouver le référentiel correspondant à l'ID
 $referentiel = array_filter($referentiels, fn($r) => $r['id'] == $apprenant['referentiel_id']);
 $referentiel = reset($referentiel);
 ?>

@@ -76,9 +76,10 @@ function handleRoute($route, $data) {
         case '/download': 
             handleDownloadApprenants();
             break;
-
+        case '/apprenant-dashboard':
+                require_once __DIR__ . '/../../app/views/apprenant/apprenant-dashboard.php';
         default:
-            handle404();
+            // handle404();
             break;
     }
 }

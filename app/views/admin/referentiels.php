@@ -9,11 +9,9 @@ $promotionsFile = '/var/www/ges-apprenant/data/data.json';
 $promotionsData = json_decode(file_get_contents($promotionsFile), true);
 $promotions = $promotionsData['promotions'] ?? [];
 
-// Identifier la promotion active ou terminée
 $promotionActive = array_filter($promotions, fn($promo) => $promo['etat'] === 'active' || $promo['statut'] === 'terminée');
 $promotionActive = reset($promotionActive);
 
-// Filtrer les référentiels associés à la promotion active ou terminée
 $filteredReferentiels = [];
 if ($promotionActive) {
     $filteredReferentiels = array_filter($referentiels, function ($ref) use ($promotionActive) {
@@ -21,7 +19,6 @@ if ($promotionActive) {
     });
 }
 
-// Pagination
 $itemsPerPage = 4; 
 $totalItems = count($filteredReferentiels); 
 $totalPages = ceil($totalItems / $itemsPerPage); 
@@ -35,13 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['affecter'])) {
     $referentielIds = $_POST['referentiel_ids'] ?? []; 
 
     if ($promotionActive && $promotionActive['etat'] === 'active' && $promotionActive['statut'] === 'en cours') {
-        // Référentiels déjà affectés
         $currentReferentiels = $promotionActive['referentiels'];
 
-        // Référentiels à ajouter
         $toAdd = array_diff($referentielIds, $currentReferentiels);
 
-        // Référentiels à retirer
         $toRemove = array_diff($currentReferentiels, $referentielIds);
 
         // Ajouter les nouveaux référentiels
@@ -516,9 +510,7 @@ removeSession('success');
   </style>
 </head>
 <body>
-  <!-- <input type="checkbox" id="sidebar-toggle" hidden>
-<label for="sidebar-toggle" class="sidebar-toggle-btn">
-  <i class="fas fa-bars"></i> -->
+ 
 </label>
 <?php include __DIR__ . '/../layouts/sidebar.php'; ?>
 

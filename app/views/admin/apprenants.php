@@ -494,43 +494,11 @@ $referentiel = array_filter($referentiels, fn($r) => $r['id'] == $apprenant['ref
 <?php
 // filepath: /var/www/ges-apprenant/app/views/admin/apprenants.php
 
-// Charger les données des apprenants
 $filePath = '/var/www/ges-apprenant/data/data.json';
 $data = json_decode(file_get_contents($filePath), true);
 $apprenants = $data['apprenants'] ?? [];
 
-// // Gérer le changement de statut
-// if (isset($_GET['action']) && $_GET['action'] === 'change-statut' && isset($_GET['id']) && isset($_GET['statut'])) {
-//     $id = (int)$_GET['id'];
-//     $newStatut = $_GET['statut'];
-//     $found = false;
 
-//     foreach ($apprenants as &$apprenant) {
-//         if ((int)$apprenant['id'] === $id) { 
-//             $apprenant['statut'] = $newStatut; 
-//             $found = true;
-//             break;
-//         }
-//     }
-//     unset($apprenant); // Éviter les références accidentelles
-
-//     if ($found) {
-//         // Sauvegarder les modifications dans le fichier JSON
-//         if (file_put_contents($filePath, json_encode($data, JSON_PRETTY_PRINT))) {
-//             $_SESSION['success'] = "Le statut de l'apprenant a été mis à jour avec succès.";
-//         } else {
-//             $_SESSION['errors'][] = "Erreur lors de la sauvegarde des modifications.";
-//         }
-//     } else {
-//         $_SESSION['errors'][] = "Apprenant introuvable.";
-//     }
-
-//     // Rediriger pour éviter la répétition de l'action
-//     header('Location: ' . strtok($_SERVER['REQUEST_URI'], '?'));
-//     exit;
-// }
-
-// Recharger les données après modification
 $data = json_decode(file_get_contents($filePath), true);
 $apprenants = $data['apprenants'] ?? [];
 ?>

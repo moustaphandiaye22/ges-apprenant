@@ -20,8 +20,14 @@ function handleLogin($data)
             $user = authenticateUser($data['users'], $login, $password);
 
             if ($user) {
-                setSession('user', $user); 
-                header('Location: /ges-apprenant/public/dashboard');
+                setSession('user', $user);
+
+                // Rediriger en fonction du profil
+                if (isset($user['profil']) && $user['profil'] === 'Apprenant') {
+                    header('Location: /ges-apprenant/public/apprenant-dashboard');
+                } else {
+                    header('Location: /ges-apprenant/public/dashboard');
+                }
                 exit;
             } else {
                 $error = Messages::ERROR_INVALID_CREDENTIALS;
@@ -36,11 +42,26 @@ function handleLogin($data)
 }
 
 function authenticateUser($users, $login, $password) {
-    foreach ($users as $user) {
-        if ($user['login'] === $login && $user['password'] === $password) {
-            return $user;
-        }
+    $user = array_filter($users, fn($user) => $user['login'] === $login && $user['password'] === $password);
+    if (!empty($user)) {
+        return reset($user); 
     }
+
+    $jsonPath = __DIR__ . '/../data/data.json';
+    $data = json_decode(file_get_contents($jsonPath), true);
+    $apprenants = $data['apprenants'] ?? [];
+
+    $apprenant = array_filter($apprenants, fn($apprenant) => $apprenant['email'] === $login && password_verify($password, $apprenant['password']));
+    if (!empty($apprenant)) {
+        $apprenant = reset($apprenant); 
+        if ($apprenant['must_change_password']) {
+            $_SESSION['user'] = $apprenant;
+            header('Location: /ges-apprenant/public/change-password.php');
+            exit;
+        }
+        return $apprenant;
+    }
+
     return false;
 }
 
@@ -52,47 +73,45 @@ function handleChangePassword($data)
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = $_POST['email'] ?? '';
-        $oldPassword = $_POST['old_password'] ?? '';
         $newPassword = $_POST['new_password'] ?? '';
-        $confirmPassword = $_POST['confirm_password'] ?? '';
 
         // Validation des champs requis
-        $error = validateRequiredFields([
-            'email' => $email,
-            'ancien mot de passe' => $oldPassword,
-            'nouveau mot de passe' => $newPassword,
-            'confirmation du mot de passe' => $confirmPassword,
-        ]);
-
-        if (!$error) {
-            // Validation des mots de passe
-            $error = validatePasswordMatch($newPassword, $confirmPassword);
+        if (empty($email) || empty($newPassword)) {
+            $error = "L'email et le nouveau mot de passe sont requis.";
         }
 
         if (!$error) {
+
             $users = json_decode(file_get_contents($jsonPath), true);
 
-            // Recherche de l'utilisateur
-            $found = false;
-            foreach ($users as &$user) {
-                if ($user['email'] === $email && validateOldPassword($oldPassword, $user['password'])) {
-                    $user['password'] = password_hash($newPassword, PASSWORD_DEFAULT);
+            if (!$users) {
+                $error = "Erreur lors du chargement des utilisateurs.";
+            } else {
 
-                    if (file_put_contents($jsonPath, json_encode($users, JSON_PRETTY_PRINT))) {
-                        $success = Messages::SUCCESS_PASSWORD_CHANGED;
-                    } else {
-                        $error = Messages::ERROR_SAVE_FAILED;
+                $found = false;
+                foreach ($users as &$user) {
+                    if ($user['email'] === $email) {
+
+                        $user['password'] = password_hash($newPassword, PASSWORD_DEFAULT);
+
+
+                        if (file_put_contents($jsonPath, json_encode($users, JSON_PRETTY_PRINT))) {
+                            $success = Messages::SUCCESS_PASSWORD_CHANGED;
+                        } else {
+                            $error = Messages::ERROR_PASSWORD_MISMATCH;
+                        }
+                        $found = true;
+                        break;
                     }
-                    $found = true;
-                    break;
                 }
-            }
 
-            if (!$found) {
-                $error = Messages::ERROR_PASSWORD_MISMATCH;
+                if (!$found) {
+                    $error = "L'utilisateur avec cet email n'existe pas.";
+                }
             }
         }
     }
+
 
     ob_start();
     require_once __DIR__ . '/../views/auth/change.password.php';

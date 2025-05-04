@@ -38,16 +38,19 @@
     </style>
 </head>
 <body>
-    <h2 style="text-align:center">Changer votre mot de passe</h2>
+    <h2 style="text-align:center">Changer le mot de passe</h2>
 
-    <!-- Affichage des messages d'erreur ou de succès -->
-    <?php if (!empty($error)) echo "<div class='message'>$error</div>"; ?>
-    <?php if (!empty($success)) echo "<div class='message success'>$success</div>"; ?>
+    <?php if (!empty($error)): ?>
+        <div style="color: red;"><?= htmlspecialchars($error) ?></div>
+    <?php endif; ?>
+    <?php if (!empty($success)): ?>
+        <div style="color: green;"><?= htmlspecialchars($success) ?></div>
+    <?php endif; ?>
 
     <form method="post">
-        <input type="password" name="old_password" placeholder="Ancien mot de passe" required>
-        <input type="password" name="new_password" placeholder="Nouveau mot de passe" required>
-        <button type="submit">Valider</button>
+        <input type="email" name="email" placeholder="Email" >
+        <input type="password" name="new_password" placeholder="Nouveau mot de passe" >
+        <button type="submit">Mettre à jour</button>
     </form>
 </body>
 </html>

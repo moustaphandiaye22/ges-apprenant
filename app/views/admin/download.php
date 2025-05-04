@@ -25,7 +25,7 @@ if (isset($_GET['format'])) {
         $html .= '</table>';
 
         // Utiliser Dompdf pour générer le PDF
-        $dompdf = new Dompdf\Dompdf();
+        // $dompdf = new Dompdf\Dompdf();
         $dompdf->loadHtml($html);
         $dompdf->setPaper('A4', 'landscape');
         $dompdf->render();

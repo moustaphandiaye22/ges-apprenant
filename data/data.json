@@ -21,18 +21,41 @@
             "login": "apprenant",
             "password": "apprenant123",
             "profil": "Apprenant",
-            "nom": "Apprenant Test",
+            "nom": "Apprenant ODC",
             "email": "apprenant@odc.com"
+        },
+        {
+            "id": 4,
+            "login": "tapha",
+            "password": "tapha123",
+            "profil": "Apprenant",
+            "nom": "tapha ODC",
+            "email": "tapha@odc.com"
         }
     ],
     "promotions": [
+        {
+            "id": 2,
+            "nom": "promotion 2019",
+            "date_debut": "2019-04-19",
+            "date_fin": "2019-02-17",
+            "photo": "Download premium vector of Yellow 2019 neon sign vector by Ning about christmas, brick wall, new year, neon, and golden 532808.jpeg",
+            "etat": "active",
+            "statut": "termin\u00e9",
+            "referentiels": [
+                "7",
+                "6",
+                "5"
+            ],
+            "apprenants": []
+        },
         {
             "id": 4,
             "nom": "promotion 2025",
             "date_debut": "2025-04-24",
             "date_fin": "2025-05-11",
             "photo": "promo_6808e02bed93f5.73893951.jpeg",
-            "etat": "active",
+            "etat": "inactive",
             "statut": "en cours",
             "referentiels": [
                 "2",
@@ -59,21 +82,6 @@
             "statut": "termin\u00e9",
             "referentiels": [
                 "3"
-            ],
-            "apprenants": []
-        },
-        {
-            "id": 2,
-            "nom": "promotion 2019",
-            "date_debut": "2019-04-19",
-            "date_fin": "2019-02-17",
-            "photo": "Download premium vector of Yellow 2019 neon sign vector by Ning about christmas, brick wall, new year, neon, and golden 532808.jpeg",
-            "etat": "inactive",
-            "statut": "termin\u00e9",
-            "referentiels": [
-                "7",
-                "6",
-                "5"
             ],
             "apprenants": []
         },
@@ -528,7 +536,9 @@
             "tuteur_adresse": "dakar",
             "tuteur_telephone": "771411251",
             "document": "\/uploads\/Capture d\u2019\u00e9cran du 2025-04-02 11-16-22.png",
-            "statut": "Actif"
+            "statut": "Actif",
+            "password": "fallou123"
+            
         }
     ]
 }

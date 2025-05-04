@@ -91,7 +91,7 @@ require_once __DIR__ . '/../../services/session.service.php';
 </head>
 <body>
 <?php
-include __DIR__ . '/../layouts/sidebar.php'; // Inclure le layout principal
+include __DIR__ . '/../layouts/sidebar.php'; 
 ?>
 
 <?php $errors = getSession('errors', []); ?>
