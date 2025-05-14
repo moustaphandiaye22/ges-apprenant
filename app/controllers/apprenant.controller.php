@@ -114,6 +114,7 @@ function handleAddApprenant() {
             $promotionFilePath = __DIR__ . '/../../data/data.json';
             $data = jsonToArray($promotionFilePath);
 
+            // Ajouter l'apprenant à la promotion active
             $promotionActive = array_filter($data['promotions'], function ($promotion) {
                 return $promotion['etat'] === 'active' && $promotion['statut'] === 'en cours';
             });
@@ -122,18 +123,39 @@ function handleAddApprenant() {
                 $promotionActive = reset($promotionActive); 
                 $promotionId = $promotionActive['id'];
 
-                // Ajouter l'apprenant à la promotion
                 $data['promotions'] = array_map(function ($promotion) use ($promotionId, $result) {
                     if ($promotion['id'] === $promotionId) {
                         $promotion['apprenants'][] = $result['id'];
                     }
                     return $promotion;
                 }, $data['promotions']);
-                arrayToJson($promotionFilePath, $data);
             }
 
-           
+            // Ajouter l'apprenant à la section "users"
+            $data['users'][] = [
+                'id' => $result['id'],
+                'prenom' => $prenom,
+                'nom' => $nom,
+                'email' => $email,
+                'password' => $hashedPassword,
+                'role' => 'Apprenant',
+                'document' => $document,
+                'referentiel_id' => $referentiel_id,
+                'date_naissance' => $date_naissance,
+                'lieu_naissance' => $lieu_naissance,
+                'adresse' => $adresse,
+                'telephone' => $telephone,
+                'tuteur_nom' => $tuteur_nom,
+                'tuteur_lien' => $tuteur_lien,
+                'tuteur_adresse' => $tuteur_adresse,
+                'tuteur_telephone' => $tuteur_telephone,
+                'profil' => 'Apprenant',
+            ];
 
+            // Sauvegarder les modifications dans le fichier JSON
+            arrayToJson($promotionFilePath, $data);
+
+            // Envoyer un email de confirmation
             if (mail($email, $subject, $message, $headers)) {
                 setSession('success', Messages::SUCCESS_ADD_APPRENANT . " " . Messages::SUCCESS_EMAIL_SENT);
             } else {

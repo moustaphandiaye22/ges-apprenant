@@ -47,9 +47,7 @@ function handleRoute($route, $data) {
             break;
 
         case '/referentiels':
-            $data = [
-                'referentiels' => handleAddReferentiel($data)
-            ];
+            handleAddReferentiel($data);
             require_once __DIR__ . '/../../app/views/admin/referentiels.php';
             break;
 
@@ -74,7 +72,7 @@ function handleRoute($route, $data) {
             break;
 
         case '/download': 
-            handleDownloadApprenants();
+            // handleDownloadApprenants();
             break;
         case '/apprenant-dashboard':
                 require_once __DIR__ . '/../../app/views/apprenant/apprenant-dashboard.php';

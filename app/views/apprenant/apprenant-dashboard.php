@@ -223,23 +223,27 @@
   <div class="dashboard">
     <!-- Profil -->
     <div class="card profile">
-      <img src="https://via.placeholder.com/80" alt="Avatar" />
+      <img src="<?= htmlspecialchars(getSession('user')['document'] ?? '/path/to/default-avatar.png') ?>" alt="Photo de l'apprenant" /><br>
       <div class="info">
-        <h2><?= htmlspecialchars(getSession('user')['prenom'] . ' ' . getSession('user')['nom']) ?></h2>
-        <p class="role">Apprenant</p>
+        <h2><?= htmlspecialchars(getSession('user')['prenom'] . ' ' . getSession('user')['nom']) ?></h2><br>
         <div class="contact">
           <span class="icon">📧</span> <?= htmlspecialchars(getSession('user')['email']) ?>
-        </div>
+        </div><br>
         <div class="contact">
           <span class="icon">🆔</span> <?= htmlspecialchars(getSession('user')['matricule'] ?? 'N/A') ?>
-        </div>
+                </div>
       </div>
     </div>
 
     <div class="card qr">
       <div class="qr-icon">🔳</div>
       <h3>Scanner pour la présence</h3>
-      <img src="https://api.qrserver.com/v1/create-qr-code/?data=<?= urlencode(getSession('user')['prenom'] . ' ' . getSession('user')['nom'] . ' - ' . getSession('user')['email']) ?>&size=150x150" alt="QR Code" />
+      <img src="https://api.qrserver.com/v1/create-qr-code/?data=<?= urlencode(
+        'Prénom: ' . getSession('user')['prenom'] . "\n" .
+        'Nom: ' . getSession('user')['nom'] . "\n" .
+        'Email: ' . getSession('user')['email'] . "\n" .
+        'Matricule: ' . (getSession('user')['matricule'] ?? 'N/A') . "\n" 
+      ) ?>&size=150x150" alt="QR Code" />
       <div class="code-value"><?= htmlspecialchars(getSession('user')['prenom'] . ' ' . getSession('user')['nom']) ?></div>
     </div>
 
